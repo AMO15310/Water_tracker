@@ -5,49 +5,88 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script>
-        localStorage.setItem("Names", 'Amos Mwongela')
-    </script>
     <script src="script.js"></script>
+    <!-- <script src=""></script> -->
     <link rel="stylesheet" href="style.css">
-    <title>Munene'sBucket</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <title>Benmax's Bucket</title>
+
 </head>
 
 <body>
     <div class="nav">
-        <div>
-            <img class="logo" src="./WhatsApp Image 2022-09-28 at 19.02.46.jpeg" alt="logo" class="image">
+        <ul>
+            <div class="tabs">
+                <!-- <i class="fa fa-car"></i> -->
+                <!-- <i class="fa-duotone fa-house"></i> -->
+                <!-- <i class="fa fa-home fa-fw"></i> -->
+                <div onclick="disp()" class="toggle">
+                    <li><i class="fa-solid fa-bars"></i></li>
+                </div>
+                <div class="tools">
+                <li> <a href="#" <strong> <i class="fa fa-home fa-fw"></i>
+                        Home </strong></a></li>
+                <li><a href="newrecord.html"><i class="fa-regular fa-clipboard"></i> New record</a></li>
+                <li><a href="records.html"><i class="fa-solid fa-table"></i> Records</a></li>
+                <li><a href="Settings.html"><i class="fa-solid fa-gears"></i> Settings</a></li>
+            </div>
 
-        </div>
-        <div class="links">
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="./newrecord.html">New Record</a></li>
-                <li><a href="./services.html">Services</a></li>
-            </ul>
-        </div>
+            </div>
+            <div class="last">
+                <li class="last"><a class="last" href=""> <i class="fa-solid fa-right-from-bracket"></i> Log out</a></li>
+
+
+            </div>
+        </ul>
+        <!-- <a href=""></a> -->
     </div>
-    <!-- <div>
-        <img src="./WhatsApp Image 2022-09-28 at 19.02.46.jpeg" alt="logo" class="image">
-    </div> -->
-    <div>
-        <table>
+
+
+    <div class="logo">
+        <img src="./imagelogo.jpeg" alt="logo">
+
+
+    </div>
+
+    <div class="cont">
+        <table class="table">
             <tr>
-                <th>No</th>
                 <th>Name</th>
-                <th>Contact</th>
+                <!-- <th>Email</th> -->
+                <th>Phone Number</th>
                 <th>Meter Number</th>
-                <th>Units</th>
-                <th>Consumed units</th>
-                <th>Initial units</th>
-                <th>Final units</th>
-                <th>Email</th>
-                <th>Total Cost</th>
-                <th></th>
+                <th>Initial readings</th>
+                <th>Final readings</th>
+                <th>Consumed Units</th>
+                <th>Unit cost</th>
+                <th>Total cost</th>
+                <th>Payment recieved</th>
+                <th>Balance carried forward</th>
+
+
 
             </tr>
-            <tr>
-                <td>No</td>
+
+            <div class="data">
+                <tr>
+                    <td>No</td>
+                    <td>Name</td>
+                    <td>Contact</td>
+                    <td>Meter Number</td>
+                    <td>Units</td>
+                    <td>Consumed units</td>
+                    <td>Initial units</td>
+                    <td>Final units</td>
+                    <td>Email</td>
+                    <td>Total Price</td>
+                    <!-- <td><button class="edit">Edit</button></td> -->
+
+
+                </tr>
+
+                <tr>
+                    <!-- <td>No</td>
                 <td>Name</td>
                 <td>Contact</td>
                 <td>Meter Number</td>
@@ -56,36 +95,32 @@
                 <td>Initial units</td>
                 <td>Final units</td>
                 <td>Email</td>
-                <td>Total Price</td>
-                <td><button class="edit">Edit</button></td>
+                <td>Total Price</td> -->
+                    <!-- <td><button class="edit">Edit</button></td> -->
 
-            </tr>
-            <tr>
-                <td>No</td>
-                <td>Name</td>
-                <td>Contact</td>
-                <td>Meter Number</td>
-                <td>Units</td>
-                <td>Consumed units</td>
-                <td>Initial units</td>
-                <td>Final units</td>
-                <td>Email</td>
-                <td>Total price</td>
-                <td><button class="edit">Edit</button></td>
 
-            </tr>
 
+
+                </tr>
+            </div>
 
 
         </table>
 
 
-
-
-
-
-
     </div>
+    <!-- <footer></footer> -->
+    <div class="footer">
+        <footer>
+            <div>
+
+            </div>
+        </footer>
+    </div>
+
+    <script src="display.js"></script>
 </body>
+<!-- <footer></footer> -->
+
 
 </html>
