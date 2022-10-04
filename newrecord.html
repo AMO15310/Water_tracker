@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New record</title>
-    <!-- <script src="script.js"></script> -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
@@ -24,44 +23,42 @@
                 <div onclick="showLinks()" class="toggle">
                     <li><i class="fa-solid fa-bars"></i></li>
                 </div>
-                <div class="tools">
-                    <li> <a href="./index.html" <strong> <i class="fa fa-home fa-fw"></i>
+                <div id="tools">
+                    <li> <a href="#" <strong> <i class="fa fa-home fa-fw"></i>
                             Home </strong></a></li>
-                    <li><a href="#"> <i class="fa-regular fa-clipboard"></i> New record</a></li>
-                    <li><a href="./records.html"> <i class="fa-solid fa-table"></i> Records</a></li>
+                    <li><a href="newrecord.html"><i class="fa-regular fa-clipboard"></i> New record</a></li>
+                    <li><a href="records.html"><i class="fa-solid fa-table"></i> Records</a></li>
                     <li><a href="Settings.html"><i class="fa-solid fa-gears"></i> Settings</a></li>
                 </div>
+
             </div>
             <div class="last">
                 <li class="last"><a class="last" href=""> <i class="fa-solid fa-right-from-bracket"></i> Log out</a>
                 </li>
             </div>
         </ul>
-
-        <!-- <a href=""></a> -->
     </div>
-
     <div class="fom">
         <form action="">
             <div class="sect">
                 <label for="Name">Name</label>
-                <input type="text">
+                <input class="name" type="text">
             </div>
             <div class="sect">
                 <label for="Phone">Phone Number</label>
-                <input type="tel">
+                <input class="phone-no" type="tel">
             </div>
             <div class="sect">
                 <label for="MeterNum">Meter Number</label>
-                <input type="text">
+                <input class="meter-no" type="text">
             </div>
             <div class="sect">
                 <label for="InitialRead">Initial readings</label>
-                <input type="number">
+                <input class="initial-reading" type="number">
             </div>
             <div class="sect">
                 <label for="FinalRead">Final readings</label>
-                <input type="number">
+                <input class="final-reading" type="number">
             </div>
             <!-- <div onclick="display()" class="toggle">
                 <li><i class="fa-solid fa-bars"></i></li>
@@ -70,11 +67,11 @@
             <input type="number"> -->
             <div class="sect">
                 <label for="unitCost">Unit cost</label>
-                <input type="number" value="120">
+                <input class="unit-cost" type="number" value="120">
             </div>
             <!-- <label for="Cost"></label> -->
             <!-- <button class="submit">submit</button> -->
-            <input type="button" class="btn btn-outline-primary" value="Submit">
+            <input type="submit" id="submit-btn" class="btn btn-outline-primary" value="Submit">
 
 
         </form>
@@ -102,6 +99,7 @@
         </div>
 
     </div>
+    <script src="script.js"></script>
     <script src="display.js"></script>
 
 </body>
