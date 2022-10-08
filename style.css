@@ -38,12 +38,14 @@ body {
     list-style: none;
     display: flex;
     gap: 2rem;
-    /* align-items: flex-end; */
-    /* justify-items: flex-end; */
     font-weight: bold;
-    /* flex-direction: row; */
 }
-
+.succ{
+    text-align: center;
+    padding: 4px;
+    color: green;
+    display: none;
+}
 
 
 ul a {
@@ -138,7 +140,7 @@ input {
     width: 20rem;
 }
 
-input[type=button] {
+input[type=submit] {
     margin: 1rem 0rem;
 }
 
