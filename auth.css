@@ -56,10 +56,10 @@ form .log{
     font-size:x-large;
 }
 footer{
-    background-color: skyblue;
+    /* background-color: skyblue;
     height: 5rem;
     /* margin-bottom: 0; */
-    width: 100% !important;
+    /* width: 100% !important; */ 
 
     
 }
@@ -79,10 +79,10 @@ input{
     width: 70%;
     
 }
-footer{
+/* footer{
     background-color: skyblue;
     height: 5rem !important;
     width: 100% !important;
 
-}
+} */
 }
