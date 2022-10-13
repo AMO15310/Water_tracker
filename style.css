@@ -45,6 +45,14 @@ body {
     padding: 4px;
     color: green;
     display: none;
+    /* border: 1px solid black; */
+}
+.message2 {
+    text-align: center;
+    padding: 4px;
+    /* margin-top: 3rem; */
+    color: red;
+    display: none;
 }
 
 

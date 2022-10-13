@@ -5,20 +5,21 @@ const switchButton = document.querySelector(".mode");
 const body = document.querySelector("body");
 let element = document.body;
 const loginbtn = document.querySelector("#loginbtn");
+
 // AUTH
 const mail = document.querySelector(".email")
-const pass = document.querySelector(".pass")
+// const pass = document.querySelector(".pass")
 
 const email = "a@gmail.com";
 const password = "1234";
 
 // LOG IN REDIRECT
-loginbtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  if (mail.value == email && pass.value == password) {
-    window.location.href = "./index.html";
-  }
-});
+// loginbtn.addEventListener("click", (e) => {
+//   e.preventDefault();
+//   if (mail.value == email && pass.value == password) {
+//     window.location.href = "./index.html";
+//   }
+// });
 
 // let switchedMode = true
 // let notSwitched = false
@@ -56,20 +57,21 @@ const closeLinks = () => {
 
 // LOAD DATA
 (() => {
-  const records = JSON.parse(localStorage.getItem("records"));
+  const records = JSON.parse(localStorage.getItem("JsonData"));
+  console.log(records)
   records.forEach((record) => {
     const tr = document.createElement("tr");
     tr.innerHTML = `
-        <td>${record.client}</td>
-        <td>${record.tel}</td>
-        <td>${record.meter}</td>
-        <td>${record.initialR}</td>
-        <td>${record.finalR}</td>
-        <td>${record.usedUnits}</td>
-        <td>${record.untCost}</td>
-        <td>${record.ttalBill}</td>
-        <td>${record.payed}</td>
-        <td>${record.bal}</td>
+        <td>${record.clientName}</td>
+        <td>${record.phoneno}</td>
+        <td>${record.meterv}</td>
+        <td>${record.initialr}</td>
+        <td>${record.finalr}</td>
+        <td>${record.consumed}</td>
+        <td>${record.unitCost}</td>
+        <td>${record.totalCost}</td>
+        <td>${record.totalpayed}</td>
+        <td>${record.balance}</td>
         <td><button class="edit">Edit</button></td>
         <td><button type="button" class="btn btn-danger">Delete</button></td>
     
@@ -77,3 +79,4 @@ const closeLinks = () => {
     container.appendChild(tr);
   });
 })();
+
