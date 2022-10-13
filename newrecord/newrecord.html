@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New record</title>
+    <!-- <link rel="stylesheet" href="/css/style.css"> -->
+    <link rel="stylesheet" href="/Water_tracker/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+</head>
+
+<body>
+    <div class="nav">
+        <ul>
+            <div class="tabs">
+                <div onclick="showLinks()" class="toggle">
+                    <li><i class="fa-solid fa-bars"></i></li>
+                </div>
+                <div id="tools">
+                    <li> <a href="/Water_tracker/home/index.html" <strong> <i class="fa fa-home fa-fw"></i>
+                            Home </strong></a></li>
+                    <li><a href="#"><i class="fa-regular fa-clipboard"></i> New record</a></li>
+                    <li><a href="/Water_tracker/records/records.html"><i class="fa-solid fa-table"></i> Records</a></li>
+                    <li><a href="/Water_tracker/settings/Settings.html"><i class="fa-solid fa-gears"></i> Settings</a></li>
+                </div>
+
+            </div>
+            <div class="last">
+                <li class="last"><a class="last" href="/Water_tracker/auth/auth.html"> <i class="fa-solid fa-right-from-bracket"></i> Log out</a>
+                </li>
+            </div>
+        </ul>
+    </div>
+    <div class="message2">Please fill all fields</div>
+    <div class="fom">
+        <form action="">
+            <div class="sect">
+                <label for="Name">Name</label>
+                <input class="name" type="text">
+            </div>
+            <div class="sect">
+                <label for="Phone">Phone Number</label>
+                <input class="phone-no" type="tel">
+            </div>
+            <div class="sect">
+                <label for="MeterNum">Meter Number</label>
+                <input class="meter-no" type="text">
+            </div>
+            <div class="sect">
+                <label for="InitialRead">Initial readings</label>
+                <input class="initial-reading" type="number">
+            </div>
+            <div class="sect">
+                <label for="FinalRead">Final readings</label>
+                <input class="final-reading" type="number">
+            </div>
+            <!-- <div onclick="display()" class="toggle">
+                <li><i class="fa-solid fa-bars"></i></li>
+            </div> -->
+            <!-- <label for="cons">Consumed Units</label>
+            <input type="number"> -->
+            <div class="sect">
+                <label for="unitCost">Unit cost</label>
+                <input class="unit-cost" type="number" value="120">
+            </div>
+            <!-- <label for="Cost"></label> -->
+            <!-- <button class="submit">submit</button> -->
+            <input  type="submit" id="submit-btn" class="btn btn-outline-primary" value="Submit">
+
+
+        </form>
+        <div class="succ">
+            Successfully submitted don't click again
+        </div>
+    </div>
+    <div class="footer">
+        <footer>
+            <div>
+
+            </div>
+        </footer>
+    </div>
+    <div id="linnks">
+        <div onclick="closeLinks()">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+        <div class="lnks">
+            <a href="./index.html" <strong> <i class="fa fa-home fa-fw"></i>
+                Home </strong></a>
+            <a href="#"><i class="fa-regular fa-clipboard"></i> New record</a>
+            <a href="records.html"><i class="fa-solid fa-table"></i> Records</a>
+            <a href="Settings.html"><i class="fa-solid fa-gears"></i> Settings</a>
+            <a  href=""> <i class="fa-solid fa-right-from-bracket"></i> Log out</a>
+
+        </div>
+
+    </div>
+    <script src="script.js"></script>
+    <!-- <script src="display.js"></script> -->
+
+</body>
+
+</html>
