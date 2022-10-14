@@ -7,7 +7,7 @@
 body {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   height: 100vh;
 }
 
@@ -79,10 +79,19 @@ ul a {
   align-items: center;
 }
 .mode:hover {
-  background-color: white;
+  background-color: honeydew;
 }
 .mode i {
   margin-right: 0.5rem;
+}
+.button-switch {
+  display: flex;
+
+  /* justify-content: center; */
+  /* margin-top: 2rem; */
+  /* align-items: center; */
+  /* margin-bottom: 90; */
+  padding: 1rem 0.5rem;
 }
 
 .logo img {
@@ -151,7 +160,7 @@ tr:hover {
 input {
   padding: 2px;
   margin-bottom: 0.4rem;
-  border: 1px solid black;
+  border: 1px solid gray;
   background-color: transparent;
   height: 2rem;
   width: 20rem;
@@ -214,6 +223,13 @@ footer {
   width: 100%;
   margin: 0.5rem;
 }
+/* body {
+  width: 100%;
+  padding: 25px;
+  background-color: black;
+  color: white;
+  font-size: 25px;
+} */
 @media (max-width: 600px) {
   .logo img {
     border: 0rem;
