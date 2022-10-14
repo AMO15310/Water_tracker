@@ -1,6 +1,7 @@
 const homeContainer = document.querySelector(".table2");
 
 const Jsondata = localStorage.getItem("JsonData");
+const bodyy = document.querySelector("body");
 const cleanData = JSON.parse(Jsondata);
 
 cleanData.forEach((element) => {
@@ -19,3 +20,5 @@ cleanData.forEach((element) => {
     `;
   homeContainer.appendChild(tabrow);
 });
+const theme = localStorage.getItem("theme");
+bodyy.classList = theme;
