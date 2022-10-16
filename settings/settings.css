@@ -65,6 +65,10 @@ input {
   border: none;
   border-bottom: 1px solid #444;
 }
+input:focus-within {
+  border: none;
+  border-bottom: 1px solid red;
+}
 label {
   padding-top: 1rem;
   color: skyblue;
@@ -107,4 +111,18 @@ button {
 }
 .p2 {
   margin: 2rem;
+}
+@media only screen and (max-width: 600px) {
+  .credentials {
+    margin: 0rem;
+    flex-direction: column;
+  }
+  .password {
+    margin: 1rem 0;
+    padding: 0rem;
+    border: none;
+  }
+  input {
+    width: 100%;
+  }
 }
