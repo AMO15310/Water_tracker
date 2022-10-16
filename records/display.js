@@ -6,6 +6,8 @@ const switchButton = document.querySelector(".mode");
 const body = document.querySelector("body");
 let element = document.body;
 const loginbtn = document.querySelector("#loginbtn");
+const deletebtn = document.querySelector("#delete");
+const editbtn = document.querySelector(".edit");
 
 // AUTH
 const mail = document.querySelector(".email");
@@ -22,45 +24,34 @@ const password = "1234";
 //   }
 // });
 
-// let switchedMode = true
-// let notSwitched = false
-
-// if(switchedMode){
-//   switchButton.addEventListener('click', ()=>{
-
-//     // element.classList.toggle("dark-mode");
-//       body.style.backgroundColor = 'black'
-//       // switchedMode = false
-//     })
-
-// }
-// else if(!notswitched && switchedMode){
-//   console.log(switchedMode)
-//   switchButton.addEventListener('click',()=>{
-//     body.style.backgroundColor = 'white'
-//     switchedMode = true
-//   })
-// }
-
-// DARK MODE TOGGLE
-// function mode() {
-//   var element = document.body;
-//   element.classList.toggle("dark-mode");
-// }
-
 const showLinks = () => {
   linkcontainer.style.display = "flex";
 };
 const closeLinks = () => {
   linkcontainer.style.display = "none";
 };
+
 // SHOW SUCCES MESSAGE ON SUBMIT
 
 // LOAD DATA
+const records = JSON.parse(localStorage.getItem("JsonData"));
+console.log(records);
+// const rowRecord = new Array();
+let newRecords;
+
+// const newRecords2 = newRecords
 (() => {
-  const records = JSON.parse(localStorage.getItem("JsonData"));
-  console.log(records);
+  // const records = JSON.parse(localStorage.getItem("JsonData"));
+
   records.forEach((record) => {
+    const indx = records.indexOf(record);
+    // console.log(indx);
+    const del = () => {
+      // const rowRecordarray = rowRecord.push(records);
+      records.splice(indx, 1);
+      // console.log(records);
+      // return records;
+    };
     const tr = document.createElement("tr");
     tr.innerHTML = `
         <td>${record.clientName}</td>
@@ -74,27 +65,38 @@ const closeLinks = () => {
         <td>${record.totalpayed}</td>
         <td>${record.balance}</td>
         <td><button class="edit">Edit</button></td>
-        <td><button type="button" class="btn btn-danger">Delete</button></td>
+        <td><button  type="button" id="del" class="btn btn-danger delete">Delete</button></td>
 
         `;
     container.appendChild(tr);
-    // const element = document.createElement("tr");
-    // element.innerHTML = `
-    //     <td>${record.clientName}</td>
-    //     <td>${record.phoneno}</td>
-    //     <td>${record.meterv}</td>
-    //     <td>${record.initialr}</td>
-    //     <td>${record.finalr}</td>
-    //     <td>${record.consumed}</td>
-    //     <td>${record.unitCost}</td>
-    //     <td>${record.totalCost}</td>
-    //     <td>${record.totalpayed}</td>
-    //     <td>${record.balance}</td>
-
-    //     <td><button class="edit">Edit</button></td>
-    //     <td><button type="button" class="btn btn-danger">Delete</button></td>
-
-    //   `;
-    // container2.appendChild(element);
   });
 })();
+
+const delbtn = document.getElementsByClassName("delete");
+const dlbtn = document.querySelectorAll("#del");
+
+// for (let btn of delbtn) {
+//   btn.addEventListener("click", () => {
+//     // records.find((record) => {
+//     //   return record;
+//     // });
+//     console.log
+//   });
+// }
+console.log(dlbtn);
+
+dlbtn.forEach((btn) => {
+  btn.addEventListener("click", (id) => {
+    // console.log(
+    //   records.find((record) => {
+    //     return record;
+    //   })
+    // );
+
+    console.log(
+      records.find((record) => {
+        return record.id === id;
+      })
+    );
+  });
+});
