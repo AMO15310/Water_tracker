@@ -52,8 +52,10 @@ let newRecords;
       // console.log(records);
       // return records;
     };
+    const id = Math.floor(Math.random() * 100001) + 1;
     const tr = document.createElement("tr");
     tr.innerHTML = `
+        <td>${id}</td>
         <td>${record.clientName}</td>
         <td>${record.phoneno}</td>
         <td>${record.meterv}</td>
