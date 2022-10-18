@@ -88,17 +88,17 @@ const dlbtn = document.querySelectorAll("#del");
 console.log(dlbtn);
 
 dlbtn.forEach((btn) => {
-  btn.addEventListener("click", (id) => {
+  btn.addEventListener("click", () => {
     // console.log(
     //   records.find((record) => {
     //     return record;
     //   })
     // );
-
-    console.log(
-      records.find((record) => {
-        return record.id === id;
-      })
-    );
+    console
+      .log
+      // records.find((record) => {
+      //   return record.id === id;
+      // })
+      ();
   });
 });
