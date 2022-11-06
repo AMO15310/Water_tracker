@@ -1,5 +1,6 @@
 const db = require("../config/config");
 const { v4: uuid4 } = require("uuid");
+const schemas = require("../validators/schema");
 
 const getUsers = (req, res) => {
   try {
@@ -7,24 +8,30 @@ const getUsers = (req, res) => {
       if (err) return console.log({ err });
       return res.json(response);
     });
-  } catch (error) {}
+  } catch (error) {
+    res.status(200).json(error);
+  }
 };
 
-const postUser = (req, res) => {
-  const id = uuid4();
-  const {
-    name,
-    meterNumber,
-    contact,
-    initialUnits,
-    finalUnits,
-    consumedUnits,
-    unitCost,
-    totalCost,
-    paid,
-    balance,
-  } = req.body;
+const postUser = async (req, res) => {
   try {
+    const { error, value } = schemas.schema_1.validate(req.body);
+    if (error) {
+      res.status(500).json(error);
+    }
+    const id = uuid4();
+    const {
+      name,
+      meterNumber,
+      contact,
+      initialUnits,
+      finalUnits,
+      consumedUnits,
+      unitCost,
+      totalCost,
+      paid,
+      balance,
+    } = await req.body;
     const values = {
       id,
       name,
@@ -41,10 +48,12 @@ const postUser = (req, res) => {
 
     let query = `INSERT INTO Users SET ?`;
     db.query(query, values, (err, resp) => {
-      if (err) throw err;
+      if (err) console.log(err);
       return res.json(resp);
     });
-  } catch (error) {}
+  } catch (error) {
+    res.status(500).json(error);
+  }
 };
 
 const delUser = (req, res) => {
@@ -59,7 +68,6 @@ const delUser = (req, res) => {
 
 const updateTable = (req, res) => {
   const id = req.params.id;
-
   const {
     name,
     meterNumber,
@@ -73,6 +81,10 @@ const updateTable = (req, res) => {
     balance,
   } = req.body;
   try {
+    const { err, values } = schemas.schema_2.validate(req.body);
+    if (err) {
+      res.status(500).json(err);
+    }
     const values2 = {
       name,
       meterNumber,
@@ -97,7 +109,7 @@ const updateTable = (req, res) => {
 
 const getSingle = (req, res) => {
   const id = req.params.id;
-  console.log(id);
+  //   console.log(id);
   try {
     db.query(`SELECT * FROM users WHERE id = '${id}'`, (err, resp) => {
       if (err) {
