@@ -1,6 +1,6 @@
 const db = require("../config/config");
 const { v4: uuid4 } = require("uuid");
-const schemas = require("../validators/schema");
+const schema_1 = require("../validators/schema");
 
 const getUsers = (req, res) => {
   try {
@@ -15,10 +15,6 @@ const getUsers = (req, res) => {
 
 const postUser = async (req, res) => {
   try {
-    const { error, value } = schemas.schema_1.validate(req.body);
-    if (error) {
-      res.status(500).json(error);
-    }
     const id = uuid4();
     const {
       name,
@@ -31,7 +27,11 @@ const postUser = async (req, res) => {
       totalCost,
       paid,
       balance,
-    } = await req.body;
+    } = req.body;
+    const { error, value } = schema_1.validate(req.body);
+    if (error) {
+      res.json(error.details[0].message);
+    }
     const values = {
       id,
       name,
@@ -49,10 +49,10 @@ const postUser = async (req, res) => {
     let query = `INSERT INTO Users SET ?`;
     db.query(query, values, (err, resp) => {
       if (err) console.log(err);
-      return res.json(resp);
+      res.json({ message: `Record inserted successfully`, resp });
     });
   } catch (error) {
-    res.status(500).json(error);
+    // res.json(error);
   }
 };
 
@@ -60,8 +60,10 @@ const delUser = (req, res) => {
   const id = req.params.id;
   try {
     db.query(`DELETE FROM Users WHERE id = '${id}'`, (error, response) => {
-      if (error) return console.log(error);
-      return res.json(response);
+      if (error) {
+        console.log(error);
+      }
+      res.json(`Record deleted successfully`);
     });
   } catch (error) {}
 };
@@ -81,10 +83,11 @@ const updateTable = (req, res) => {
     balance,
   } = req.body;
   try {
-    const { err, values } = schemas.schema_2.validate(req.body);
+    const { err, values } = schema_1.validate(req.body);
     if (err) {
-      res.status(500).json(err);
+      res.json(err);
     }
+    // res.json(values);
     const values2 = {
       name,
       meterNumber,
@@ -102,14 +105,13 @@ const updateTable = (req, res) => {
       if (error) {
         return console.log(error);
       }
-      return res.json(resp);
+      res.json({ message: `Record inserted successfully`, resp });
     });
   } catch (error) {}
 };
 
 const getSingle = (req, res) => {
   const id = req.params.id;
-  //   console.log(id);
   try {
     db.query(`SELECT * FROM users WHERE id = '${id}'`, (err, resp) => {
       if (err) {
