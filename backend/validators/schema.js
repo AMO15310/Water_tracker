@@ -11,17 +11,5 @@ const schema_1 = Joi.object({
   paid: Joi.number().required(),
   balance: Joi.number().required(),
 });
-const schema_2 = Joi.object({
-  name: Joi.string(),
-  contact: Joi.string(),
-  meterNumber: Joi.required(),
-  initialUnits: Joi.number(),
-  finalUnits: Joi.string(),
-  consumedUnits: Joi.number(),
-  unitCost: Joi.number(),
-  totalCost: Joi.number(),
-  paid: Joi.number(),
-  balance: Joi.number(),
-});
 
-module.exports = { schema_1, schema_2 };
+module.exports = schema_1;
