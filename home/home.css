@@ -1,3 +1,77 @@
 body {
   justify-content: space-between;
 }
+.mess{
+  display: flex;
+  justify-content: center;
+  /* border: 1px solid black; */
+  margin-bottom: 1.5rem;
+  /* width: 80%; */
+  align-items: center;
+  /* align-self: center; */
+  padding: 1rem;
+}
+.message{
+  text-transform: capitalize;
+  border: 1px solid honeydew;
+  font-size: larger;
+  font-weight: 800;
+  font-style: italic;
+  padding: 1rem;
+  border-radius: 4px;
+  background-color: honeydew;
+}
+tr:first-child:hover{
+  border-style: none;
+}
+.message:hover{
+  background-color: transparent;
+}
+.alerts{
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  text-transform: capitalize;
+  margin-top: 0.1rem;
+  margin-bottom: 1rem;
+  font-size: large;
+}
+.total{
+  /* border: 1px solid black; */
+  padding: 1.5rem;
+  border-radius: 5px;
+  background-color: lightgrey;
+}
+.bal{
+  margin-top: 5px;
+  text-align: center;
+  font-size: larger;
+  font-weight: 600;
+}
+.totalCons{
+  /* border: 1px solid black; */
+  border-radius: 5px;
+  padding: 1.5rem;
+    background-color: lightgrey;
+  
+}
+.cons{
+  margin-top: 5px;
+    text-align: center;
+    font-size: larger;
+    font-weight: 600;
+
+}
+.totalPaid{
+  border-radius: 5px;
+  padding: 1.5rem;
+  /* border: 1px solid black; */
+    background-color: lightgrey;
+
+}
+.paid{
+  margin-top: 5px;
+    text-align: center;
+    font-size: larger;
+    font-weight: 600;
+}
