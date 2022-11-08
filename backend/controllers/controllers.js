@@ -50,6 +50,7 @@ const postUser = async (req, res) => {
     db.query(query, values, (err, resp) => {
       if (err) console.log(err);
       res.json({ message: `Record inserted successfully`, resp });
+      return;
     });
   } catch (error) {
     // res.json(error);
@@ -62,6 +63,7 @@ const delUser = (req, res) => {
     db.query(`DELETE FROM Users WHERE id = '${id}'`, (error, response) => {
       if (error) {
         console.log(error);
+        return;
       }
       res.json(`Record deleted successfully`);
     });
@@ -86,6 +88,7 @@ const updateTable = (req, res) => {
     const { err, values } = schema_1.validate(req.body);
     if (err) {
       res.json(err);
+      return;
     }
     // res.json(values);
     const values2 = {
@@ -116,9 +119,64 @@ const getSingle = (req, res) => {
     db.query(`SELECT * FROM users WHERE id = '${id}'`, (err, resp) => {
       if (err) {
         return console.log(err);
+        return;
       }
       return res.json(resp);
     });
   } catch (error) {}
 };
-module.exports = { getUsers, postUser, delUser, updateTable, getSingle };
+
+const getTopBalance = (req, res) => {
+  try {
+    let query = `SELECT * FROM users WHERE balance > 5000`;
+    db.query(query, (err, users) => {
+      if (err) console.log(err);
+      res.json(users);
+      return;
+    });
+  } catch (error) {}
+};
+
+const getSumOfBal = (req, res) => {
+  try {
+    let query = `SELECT SUM(balance) FROM users`;
+    db.query(query, (err, bal) => {
+      if (err) console.log(err);
+      res.json(bal);
+      return;
+    });
+  } catch (error) {}
+};
+
+const sumPaid = (req, res) => {
+  try {
+    let query = `SELECT SUM(paid) FROM users`;
+    db.query(query, (err, paid) => {
+      if (err) console.log(err);
+      res.json(paid);
+      return;
+    });
+  } catch (error) {}
+};
+
+const sumCons = (req, res) => {
+  try {
+    let query = `SELECT SUM(consumedUnits) FROM users`;
+    db.query(query, (err, cons) => {
+      if (err) console.log(err);
+      res.json(cons[0]);
+      return;
+    });
+  } catch (error) {}
+};
+module.exports = {
+  getUsers,
+  postUser,
+  delUser,
+  updateTable,
+  getTopBalance,
+  getSingle,
+  getSumOfBal,
+  sumPaid,
+  sumCons,
+};
