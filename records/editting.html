@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script defer src="./display.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="./records.css" />
+    <title>Editt User</title>
+  </head>
+  <body>
+    <style>
+      body {
+        background-color: azure;
+      }
+      input {
+        border: none;
+        border-bottom: 1px solid black;
+      }
+      input:focus {
+        outline: none;
+        border-bottom: 1px solid coral;
+      }
+    </style>
+    <form action="edit">
+      <table>
+        <div class="sect">
+          <label for="Name">Name</label>
+          <input class="name2" type="text" />
+        </div>
+        <div class="sect">
+          <label for="Phone">Phone Number</label>
+          <input class="phone-no2" type="tel" />
+        </div>
+        <div class="sect">
+          <label for="MeterNum">Meter Number</label>
+          <input class="meter-no2" type="text" />
+        </div>
+        <div class="sect">
+          <label for="InitialRead">Initial readings</label>
+          <input class="initial-reading2" type="number" />
+        </div>
+        <div class="sect">
+          <label for="FinalRead">Final readings</label>
+          <input class="final-reading2" type="number" />
+        </div>
+
+        <div class="sect">
+          <label for="unitCost">Unit cost</label>
+          <input class="unit-cost2" type="number" value="120" />
+        </div>
+
+        <div class="sect">
+          <label for="paid">Paid</label>
+          <input class="paid" type="number" value="" />
+        </div>
+
+        <input
+          type="button"
+          id="submit-btn2"
+          class="btn btn-outline-primary"
+          value="Submit"
+        />
+        <button class="back">Back</button>
+        <br />
+        <p class="message1"></p>
+      </table>
+    </form>
+    <script defer src="./edditing.js"></script>
+  </body>
+</html>
