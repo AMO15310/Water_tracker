@@ -8,6 +8,7 @@ body {
   display: flex;
   flex-direction: column;
   /* justify-content: space-between; */
+  /* width: 80%; */
   height: 100vh;
 }
 
@@ -38,6 +39,8 @@ body {
   gap: 2rem;
   font-weight: bold;
 }
+
+
 .succ {
   text-align: center;
   padding: 4px;
@@ -97,7 +100,7 @@ ul a {
 .logo img {
   /* border: 15px; */
   border-radius: 50%;
-  max-width: 15rem;
+  max-width: 13rem;
   /* size: 15px; */
 }
 
@@ -106,8 +109,8 @@ i {
 }
 
 .table {
-  width: 100%;
-  border-collapse: collapse;
+  width:100%;
+  /* border-collapse:separate; */
 }
 
 .table2 {
@@ -116,24 +119,17 @@ i {
 }
 .toggle {
   display: none;
-  /* display: flex; */
 }
 
-/* .data{
-    /* display: flex;
-    justify-items: auto;
-    align-items: baseline; */
-/* margin-left: 
-} */
+
 td {
   padding: 1rem;
   border: 1px solid gray;
-  border-collapse: collapse;
-  /* height: 1rem; */
+  /* border-collapse: collapse; */
 }
 
 ::selection {
-  background-color: chartreuse;
+  background-color: gray;
 }
 
 .edit {
@@ -146,14 +142,18 @@ td {
 }
 
 tr:hover {
-  /* border: 1px solid burlywood; */
-  background-color: beige;
+  /* background-color:rgb(218, 202, 67); */
+  border-style: outset;
+  /* border: 1px solid red; */
+}
+tr:first-child:hover{
+  border-style: none;
+
 }
 
 .fom form {
   display: flex;
   flex-direction: column;
-  /* justify-items: center; */
   align-items: center;
 }
 
@@ -172,7 +172,6 @@ input[type="submit"] {
 
 form label {
   font-weight: bold;
-  /* justify-content: flex-start; */
 }
 
 .sect {
@@ -181,21 +180,19 @@ form label {
 }
 
 li:hover a:hover {
-  /* background-color: black; */
   color: beige !important;
   text-decoration: none !important;
+}.active{
+  color:antiquewhite;
 }
 
 footer {
   background-color: skyblue;
   height: 5rem;
-  /* margin-bottom: 0; */
 }
 
 .last {
   display: flex;
-  /* align-items: center; */
-  /* display: flex; */
   text-decoration: none;
 }
 #linnks {
@@ -206,13 +203,11 @@ footer {
   padding: 1.45rem 1rem;
   width: 100%;
   height: 50%;
-  /* height: 100%; */
   color: #fff;
   background-color: #000000;
   opacity: 0.7;
 }
 .lnks {
-  /* padding-top: 2.2rem; */
   padding: 2.2rem 7rem;
   display: flex;
   flex-direction: column;
@@ -223,13 +218,7 @@ footer {
   width: 100%;
   margin: 0.5rem;
 }
-/* body {
-  width: 100%;
-  padding: 25px;
-  background-color: black;
-  color: white;
-  font-size: 25px;
-} */
+
 @media (max-width: 600px) {
   .logo img {
     border: 0rem;
@@ -257,8 +246,6 @@ footer {
 
   .toggle {
     display: block;
-    /* padding: 2px; */
-    /* margin-left: 2px; */
-    /* margin-top: 3px; */
+    
   }
 }
