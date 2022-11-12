@@ -1,6 +1,8 @@
 const db = require("../config/config");
 const { v4: uuid4 } = require("uuid");
-const schema_1 = require("../validators/schema");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const validators = require("../validators/schema");
 
 const getUsers = (req, res) => {
   try {
@@ -28,7 +30,7 @@ const postUser = async (req, res) => {
       paid,
       balance,
     } = req.body;
-    const { error, value } = schema_1.validate(req.body);
+    const { error, value } = validators.schema_1.validate(req.body);
     if (error) {
       res.json(error.details[0].message);
     }
@@ -85,7 +87,7 @@ const updateTable = (req, res) => {
     balance,
   } = req.body;
   try {
-    const { err, values } = schema_1.validate(req.body);
+    const { err, values } = validators.schema_1.validate(req.body);
     if (err) {
       res.json(err);
       return;
@@ -169,6 +171,112 @@ const sumCons = (req, res) => {
     });
   } catch (error) {}
 };
+
+const signUp = async (req, res) => {
+  try {
+    const { email, name, password } = req.body;
+    const { error, values } = validators.signup_validator.validate(req.body);
+    if (error) {
+      res.json(error);
+      return;
+    }
+    const query_1 = `SELECT * FROM auth WHERE email = "${email}"`;
+    db.query(query_1, async (error, user) => {
+      if (error) {
+        res.json(error);
+        return;
+      }
+      if (user[0]) {
+        res.json({ message: "Account already exists" });
+        return;
+      }
+      const id = uuid4();
+      const hashed_pass = await bcrypt.hash(password, 10);
+      const query_2 = `INSERT INTO auth VALUES ("${id}","${name}","${email}","${hashed_pass}")`;
+      db.query(query_2, async (error, succes) => {
+        if (error) {
+          res.json(error);
+          return;
+        }
+        res.json({ message: "Account created successfully" });
+      });
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const query_3 = `SELECT * FROM auth WHERE email = "${email}"`;
+    db.query(query_3, async (error, user) => {
+      if (error) {
+        res.json(error);
+        return;
+      }
+      if (!user[0]) {
+        res.json({ message: "Account doesn't exist! sign Up " });
+        return;
+      }
+      const legit_pass = await bcrypt.compare(password, user[0].password);
+      if (!legit_pass) {
+        res.json({ message: "Please check your password" });
+        return;
+      }
+      const payload = user.map((data) => {
+        const { password, ...rest } = data;
+        return rest;
+      });
+      const token = jwt.sign(payload[0], process.env.JWT_SECRET, {
+        expiresIn: "3600s",
+      });
+      res.json({ message: "Log in success", token });
+    });
+  } catch (error) {
+    res.json(error);
+  }
+};
+const ChangePass = async (req, res) => {
+  try {
+    const { email, password, oldpass } = await req.body;
+    const { error, values } = validators.change_validator.validate(
+      await req.body
+    );
+    if (error) {
+      res.json(error);
+      return;
+    }
+    const query_4 = `SELECT * FROM auth WHERE email = "${email}"`;
+    db.query(query_4, async (error, user) => {
+      if (error) {
+        res.json(error);
+        return;
+      }
+      if (!user[0]) {
+        res.json({ message: "Please check the email" });
+        return;
+      }
+      const legit_pass2 = await bcrypt.compare(oldpass, user[0].password);
+      if (!legit_pass2) {
+        res.json({ message: "Wrong old password " });
+        return;
+      }
+      const hashed_pass2 = await bcrypt.hash(password, 10);
+      const query_5 = `UPDATE auth SET password = "${hashed_pass2}" WHERE email = "${email}"`;
+      db.query(query_5, async (error, resp) => {
+        if (error) {
+          res.json(error);
+          return;
+        }
+        res.json({ message: "Password changed successfully" });
+      });
+    });
+  } catch (error) {
+    res.json(error);
+  }
+};
+
 module.exports = {
   getUsers,
   postUser,
@@ -179,4 +287,7 @@ module.exports = {
   getSumOfBal,
   sumPaid,
   sumCons,
+  signUp,
+  login,
+  ChangePass,
 };
