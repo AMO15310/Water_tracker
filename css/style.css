@@ -7,8 +7,6 @@
 body {
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
-  /* width: 80%; */
   height: 100vh;
 }
 
@@ -46,12 +44,10 @@ body {
   padding: 4px;
   color: green;
   display: none;
-  /* border: 1px solid black; */
 }
 .message2 {
   text-align: center;
   padding: 4px;
-  /* margin-top: 3rem; */
   color: red;
   display: none;
 }
@@ -64,9 +60,7 @@ ul a {
 .logo {
   display: flex;
   justify-content: center;
-  /* padding: 2rem; */
-  /* border:100px;
-    border-radius: 50%; */
+  
 }
 .dark-mode {
   background-color: black;
@@ -90,18 +84,12 @@ ul a {
 .button-switch {
   display: flex;
 
-  /* justify-content: center; */
-  /* margin-top: 2rem; */
-  /* align-items: center; */
-  /* margin-bottom: 90; */
   padding: 1rem 0.5rem;
 }
 
 .logo img {
-  /* border: 15px; */
   border-radius: 50%;
   max-width: 13rem;
-  /* size: 15px; */
 }
 
 i {
@@ -110,23 +98,19 @@ i {
 
 .table {
   width:100%;
-  /* border-collapse:separate; */
 }
 
 .table2 {
   width: 100%;
-  border-collapse: collapse;
+  font-size: large;
+  overflow: scroll;
 }
 .toggle {
   display: none;
 }
 
 
-td {
-  padding: 1rem;
-  border: 1px solid gray;
-  /* border-collapse: collapse; */
-}
+
 
 ::selection {
   background-color: gray;
@@ -142,9 +126,7 @@ td {
 }
 
 tr:hover {
-  /* background-color:rgb(218, 202, 67); */
   border-style: outset;
-  /* border: 1px solid red; */
 }
 tr:first-child:hover{
   border-style: none;
@@ -164,6 +146,9 @@ input {
   background-color: transparent;
   height: 2rem;
   width: 20rem;
+}
+input:focus{
+  outline: none;
 }
 
 input[type="submit"] {
