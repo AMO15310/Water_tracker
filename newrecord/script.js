@@ -10,12 +10,16 @@ const message = document.querySelector(".succ");
 const message2 = document.querySelector(".message2");
 
 let payed = 0;
+const token = localStorage.getItem("token");
+
+!token ? (location.href = "../auth/login.html") : "";
 
 const submission = (details) => {
   try {
     fetch(" http://localhost:3320/user", {
       method: "POST", // or 'PUT'
       headers: {
+        token: token,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(details),
@@ -23,6 +27,13 @@ const submission = (details) => {
       .then((res) => res.json())
       .then((response) => {
         // console.log(response.message);
+        if (
+          response.message == "jwt malformed" ||
+          response.message == "invalid signature" ||
+          response.message == "jwt expired"
+        ) {
+          location.href = "../auth/login.html";
+        }
         message.innerHTML = response.message;
         message.style.color = "green";
         message.style.display = "block";
