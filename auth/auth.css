@@ -1,0 +1,106 @@
+body{
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 4rem;
+    background-image: linear-gradient(to right, #517aca,#6c62bd);
+}
+.inpts,.inpts2,.inptshow{
+    display: flex;
+    padding-top: 2rem;
+}
+input{
+    width: 15rem;
+    height:1.5rem;
+    border: none;
+    border-bottom: 1px solid black;
+    background-color: #f1f1f1;
+
+}
+.cont{
+    border: none;
+    padding: 6rem 2rem;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+}
+.title{
+    display: flex;
+    justify-content: center;
+    text-transform: capitalize;
+    text-decoration: none;
+    font-size:x-large;
+    font-weight: 500;
+    align-self: center;
+    font-weight: 700;
+}
+
+button{
+margin-top: 2rem;
+display: flex;
+justify-content: center;
+align-self: center;
+height: 1.7rem;
+width:100%;
+border: none;
+align-items: center;
+border-radius: 5px;
+background-image: linear-gradient(to right,#418ad3,#834cb1);
+color: white;
+}
+button:hover{
+    background-image: linear-gradient(to left,#418ad3,#834cb1);
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:focus{
+    outline: none;
+}
+input:focus{
+    outline: none;
+    border-bottom: 1px solid saddlebrown;
+}
+.inpts2{
+    display: none;
+}
+.sign{
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    color:black;
+}
+.sign-btn{
+    display: flex;
+    margin-left: 5px;
+    text-decoration: none;
+    color: #6b8eae;
+}
+.sign:focus{
+    outline: none;
+}
+.sign:hover{
+    cursor: pointer;
+    font-style: italic;
+}
+.inptshow{
+    display: flex;
+}
+
+.log:hover{
+    cursor: pointer;
+}
+.mess {
+    color: #00a081;
+    border: 1px green;
+    width: auto;
+    height: 1.7rem;
+    align-items: center;
+    display: none;
+    justify-content: center;
+    border-radius: 5px;
+    background-color:aliceblue;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-weight: 700;
+}
