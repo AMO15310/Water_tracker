@@ -5,7 +5,15 @@ const AmountPaid = document.querySelector(".paid");
 
 const bodyy = document.querySelector("body");
 
-fetch(`http://localhost:3320/usersbal`)
+const token = localStorage.getItem("token");
+
+!token ? (location.href = "../auth/login.html") : "";
+
+fetch(`http://localhost:3320/usersbal`, {
+  headers: {
+    token: token,
+  },
+})
   .then((resp) => resp.json())
   .then((records) => {
     records.forEach((record) => {
@@ -32,14 +40,29 @@ fetch(`http://localhost:3320/usersbal`)
 const theme = localStorage.getItem("theme");
 bodyy.classList = theme;
 let balurl = "http://localhost:3320/totalbal";
-fetch(balurl)
+fetch(balurl, {
+  headers: {
+    token: token,
+  },
+})
   .then((res) => res.json())
   .then((bal) => {
+    if (
+      bal.message == "jwt malformed" ||
+      bal.message == "invalid signature" ||
+      bal.message == "jwt expired"
+    ) {
+      location.href = "../auth/login.html";
+    }
     balance.innerHTML = bal[0]["SUM(balance)"] + " " + "Kes";
   });
 
 let uniturl = "http://localhost:3320/totalunits";
-fetch(uniturl)
+fetch(uniturl, {
+  headers: {
+    token: token,
+  },
+})
   .then((res) => res.json())
   .then((unit) => {
     consumed.innerHTML = unit["SUM(consumedUnits)"] + " " + "Units";
@@ -47,7 +70,11 @@ fetch(uniturl)
 
 let paidurl = "http://localhost:3320/totalpaid";
 
-fetch(paidurl)
+fetch(paidurl, {
+  headers: {
+    token: token,
+  },
+})
   .then((res) => res.json())
   .then((paid) => {
     AmountPaid.innerHTML = paid[0]["SUM(paid)"] + " " + "Kes";
