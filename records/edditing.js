@@ -10,15 +10,20 @@ let paidA = document.querySelector(".paid");
 
 // let TheId = JSON.stringify(Myuserid);
 // console.log(TheId);
+const token = localStorage.getItem("token");
 
+!token ? (location.href = "../auth/login.html") : "";
 function getUser() {
   let TheId = localStorage.getItem("myid");
   //   let TheId = JSON.stringify(Myuserid);
   //   console.log(TheId);
-  fetch("http://localhost:3320/user/" + TheId)
+  fetch("http://localhost:3320/user/" + TheId, {
+    headers: {
+      token: token1,
+    },
+  })
     .then((resp) => resp.json())
     .then((records) => {
-      console.log(records);
       records.forEach((record) => {
         clientname.value = record.name;
         phoneN.value = record.contact;

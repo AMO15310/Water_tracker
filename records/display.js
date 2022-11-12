@@ -20,20 +20,32 @@ const paid = document.querySelector(".paid");
 
 const mail = document.querySelector(".email");
 
-const email = "a@gmail.com";
-const password = "1234";
-
 const showLinks = () => {
   linkcontainer.style.display = "flex";
 };
 const closeLinks = () => {
   linkcontainer.style.display = "none";
 };
+const token1 = localStorage.getItem("token");
+
+!token1 ? (location.href = "../auth/login.html") : "";
 
 // FETCH DATA
-fetch(`http://localhost:3320/users`)
+fetch(`http://localhost:3320/users`, {
+  headers: {
+    token: token1,
+  },
+})
   .then((resp) => resp.json())
   .then((records) => {
+    if (
+      records.message == "jwt malformed" ||
+      records.message == "jwt expired" ||
+      records.message == "invalid signature"
+    ) {
+      location.href = "../auth/login.html";
+    }
+
     records.forEach((record) => {
       const id = Math.floor(Math.random() * 100001) + 1;
       const tr = document.createElement("tr");
@@ -59,7 +71,6 @@ fetch(`http://localhost:3320/users`)
   });
 
 const delfunc = (id) => {
-  console.log(id);
   fetch(" http://localhost:3320/user/" + id, {
     Headers: {
       "Content-Type": "application/json",
@@ -105,6 +116,7 @@ submit2.addEventListener("click", (e) => {
   };
   fetch("http://localhost:3320/user/" + userid, {
     headers: {
+      token: token1,
       "Content-Type": "application/json",
     },
     method: "PUT",
