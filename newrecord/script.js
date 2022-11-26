@@ -12,7 +12,7 @@ const message2 = document.querySelector(".message2");
 let payed = 0;
 const token = localStorage.getItem("token");
 
-!token ? (location.href = "../auth/login.html") : "";
+!token ? (location.href = "../auth/index.html") : "";
 
 const submission = (details) => {
   try {
@@ -32,7 +32,7 @@ const submission = (details) => {
           response.message == "invalid signature" ||
           response.message == "jwt expired"
         ) {
-          location.href = "../auth/login.html";
+          location.href = "../auth/index.html";
         }
         message.innerHTML = response.message;
         message.style.color = "green";

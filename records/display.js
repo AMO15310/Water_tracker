@@ -28,7 +28,7 @@ const closeLinks = () => {
 };
 const token1 = localStorage.getItem("token");
 
-!token1 ? (location.href = "../auth/login.html") : "";
+!token1 ? (location.href = "../auth/index.html") : "";
 
 // FETCH DATA
 fetch(`http://localhost:3320/users`, {
@@ -43,7 +43,7 @@ fetch(`http://localhost:3320/users`, {
       records.message == "jwt expired" ||
       records.message == "invalid signature"
     ) {
-      location.href = "../auth/login.html";
+      location.href = "../auth/index.html";
     }
 
     records.forEach((record) => {

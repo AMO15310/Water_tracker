@@ -12,7 +12,7 @@ let paidA = document.querySelector(".paid");
 // console.log(TheId);
 const token = localStorage.getItem("token");
 
-!token ? (location.href = "../auth/login.html") : "";
+!token ? (location.href = "../auth/index.html") : "";
 function getUser() {
   let TheId = localStorage.getItem("myid");
   //   let TheId = JSON.stringify(Myuserid);

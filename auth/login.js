@@ -45,7 +45,7 @@ class auth {
   token = localStorage.getItem("token");
   redirect() {
     if (this.token) {
-      location.href = "../home/index.html";
+      location.href = "../home/home.html";
     }
   }
 }

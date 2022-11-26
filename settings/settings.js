@@ -7,7 +7,7 @@ const mess = document.querySelector(".mess");
 
 const token = localStorage.getItem("token");
 
-!token ? (location.href = "../auth/login.html") : "";
+!token ? (location.href = "../auth/index.html") : "";
 cancelButton.addEventListener("click", () => {
   newEmail.value = "";
   newPass.value = "";
@@ -48,7 +48,7 @@ saveButton.addEventListener("click", () => {
     .then((resp) => resp.json())
     .then((msg) => {
       if (msg.message == "jwt expired") {
-        location.href = "../auth/login.html";
+        location.href = "../auth/index.html";
       }
 
       if (msg.message == "Password changed successfully") {

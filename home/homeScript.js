@@ -7,7 +7,7 @@ const bodyy = document.querySelector("body");
 
 const token = localStorage.getItem("token");
 
-!token ? (location.href = "../auth/login.html") : "";
+!token ? (location.href = "../auth/index.html") : "";
 
 fetch(`http://localhost:3320/usersbal`, {
   headers: {
@@ -52,7 +52,7 @@ fetch(balurl, {
       bal.message == "invalid signature" ||
       bal.message == "jwt expired"
     ) {
-      location.href = "../auth/login.html";
+      location.href = "../auth/index.html";
     }
     balance.innerHTML = bal[0]["SUM(balance)"] + " " + "Kes";
   });
