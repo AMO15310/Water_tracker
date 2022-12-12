@@ -17,14 +17,22 @@ function getUser() {
   let TheId = localStorage.getItem("myid");
   //   let TheId = JSON.stringify(Myuserid);
   //   console.log(TheId);
-  fetch("http://localhost:3320/user/" + TheId, {
-    headers: {
-      token: token1,
-    },
-  })
+  // fetch("http://localhost:3320/user/" + TheId, {
+  fetch(
+    "https://water-tracker-3943a-default-rtdb.firebaseio.com/users.json" +
+      TheId,
+    {
+      headers: {
+        token: token1,
+      },
+    }
+  )
     .then((resp) => resp.json())
+
     .then((records) => {
-      records.forEach((record) => {
+      console.log(records);
+      const clients = Object.values(records);
+      clients.forEach((record) => {
         clientname.value = record.name;
         phoneN.value = record.contact;
         meterN.value = record.meterNumber;

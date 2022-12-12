@@ -16,29 +16,34 @@ submit.addEventListener("click", () => {
     email: email.value,
     password: password.value,
   };
-  const url = "http://localhost:3320/login";
+
+  const url =
+    "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCCS9x_NSVsWGkHA1JHbkheIt-i2Jg6lSM";
   fetch(url, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(logins),
+    body: JSON.stringify({ ...logins, returnSecureToken: true }),
   })
     .then((resp) => resp.json())
     .then((msg) => {
-      console.log(msg.message);
-      mess.innerHTML = msg.message;
+      if (msg.idToken) {
+        mess.innerHTML = "Log in success";
+        mess.style.display = "flex";
+        setTimeout(() => {
+          mess.style.display = "none";
+        }, 3500);
+        localStorage.setItem("token", msg.idToken);
+        login.redirect();
+      }
+      mess.innerHTML = msg.error.message;
       mess.style.display = "flex";
       setTimeout(() => {
         mess.style.display = "none";
       }, 3500);
-      if (msg.message !== "Log in success") {
-        return;
-      }
-      localStorage.setItem("token", msg.token);
-      login.redirect();
-      //   console.log(login.token);
-    });
+    })
+    .catch((error) => {});
 });
 
 class auth {
@@ -47,6 +52,7 @@ class auth {
     if (this.token) {
       location.href = "../home/home.html";
     }
+    return;
   }
 }
 const login = new auth();

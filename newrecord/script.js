@@ -16,14 +16,18 @@ const token = localStorage.getItem("token");
 
 const submission = (details) => {
   try {
-    fetch(" http://localhost:3320/user", {
-      method: "POST", // or 'PUT'
-      headers: {
-        token: token,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(details),
-    })
+    // fetch(" http://localhost:3320/user", {
+    fetch(
+      "https://water-tracker-3943a-default-rtdb.firebaseio.com/users.json",
+      {
+        method: "POST", // or 'PUT'
+        headers: {
+          token: token,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(details),
+      }
+    )
       .then((res) => res.json())
       .then((response) => {
         // console.log(response.message);

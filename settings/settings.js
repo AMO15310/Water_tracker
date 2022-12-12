@@ -36,7 +36,10 @@ saveButton.addEventListener("click", () => {
     password: newPass.value,
     oldpass: oldPass.value,
   };
-  const url = "http://localhost:3320/changepass";
+  // const url = "http://localhost:3320/changepass";
+  const url =
+    "https://water-tracker-3943a-default-rtdb.firebaseio.com/auth.json";
+
   fetch(url, {
     method: "PATCH",
     headers: {

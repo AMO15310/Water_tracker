@@ -33,20 +33,29 @@ submitbtn.addEventListener("click", () => {
   }
   const details = {
     email: email.value,
-    name: userName.value,
     password: password.value,
+    displayName: userName.value,
   };
-  const url = "http://localhost:3320/signup";
+  const url =
+    "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCCS9x_NSVsWGkHA1JHbkheIt-i2Jg6lSM";
   fetch(url, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(details),
+    body: JSON.stringify({ ...details, returnSecureToken: true }),
   })
     .then((resp) => resp.json())
     .then((msg) => {
-      mess2.innerText = msg.message;
+      console.log(msg);
+      if (msg.idToken) {
+        mess2.innerText = "Sign up succeful Log in to access";
+        mess2.style.display = "flex";
+        setTimeout(() => {
+          mess2.style.display = "none";
+        }, 3500);
+      }
+      mess2.innerText = msg.error.message;
       mess2.style.display = "flex";
       setTimeout(() => {
         mess2.style.display = "none";

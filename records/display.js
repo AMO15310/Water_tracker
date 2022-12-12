@@ -31,22 +31,24 @@ const token1 = localStorage.getItem("token");
 !token1 ? (location.href = "../auth/index.html") : "";
 
 // FETCH DATA
-fetch(`http://localhost:3320/users`, {
+fetch(`https://water-tracker-3943a-default-rtdb.firebaseio.com/users.json`, {
   headers: {
     token: token1,
   },
 })
   .then((resp) => resp.json())
   .then((records) => {
-    if (
-      records.message == "jwt malformed" ||
-      records.message == "jwt expired" ||
-      records.message == "invalid signature"
-    ) {
-      location.href = "../auth/index.html";
-    }
+    // if (
+    //   records.message == "jwt malformed" ||
+    //   records.message == "jwt expired" ||
+    //   records.message == "invalid signature"
+    // ) {
+    //   location.href = "../auth/index.html";
+    // }
+    const clients = Object.values(records);
+    console.log(clients);
 
-    records.forEach((record) => {
+    clients.forEach((record) => {
       const id = Math.floor(Math.random() * 100001) + 1;
       const tr = document.createElement("tr");
 
@@ -71,12 +73,16 @@ fetch(`http://localhost:3320/users`, {
   });
 
 const delfunc = (id) => {
-  fetch(" http://localhost:3320/user/" + id, {
-    Headers: {
-      "Content-Type": "application/json",
-    },
-    method: "DELETE",
-  })
+  // fetch(" http://localhost:3320/user/" + id, {
+  fetch(
+    " https://water-tracker-3943a-default-rtdb.firebaseio.com/users.json" + id,
+    {
+      Headers: {
+        "Content-Type": "application/json",
+      },
+      method: "DELETE",
+    }
+  )
     .then((res) => res.json())
     .then((mess) => {
       console.log(mess);
@@ -114,14 +120,19 @@ submit2.addEventListener("click", (e) => {
     paid: paid.value,
     balance: (final2.value - initial2.value) * unit2.value - paid.value,
   };
-  fetch("http://localhost:3320/user/" + userid, {
-    headers: {
-      token: token1,
-      "Content-Type": "application/json",
-    },
-    method: "PUT",
-    body: JSON.stringify({ ...newValues }),
-  })
+  // fetch("http://localhost:3320/user/" + userid, {
+  fetch(
+    "https://water-tracker-3943a-default-rtdb.firebaseio.com/users.json" +
+      userid,
+    {
+      headers: {
+        token: token1,
+        "Content-Type": "application/json",
+      },
+      method: "PUT",
+      body: JSON.stringify({ ...newValues }),
+    }
+  )
     .then((res) => res.json())
     .then((msg) => {
       message.innerHTML = msg.message;

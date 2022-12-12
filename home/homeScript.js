@@ -9,27 +9,28 @@ const token = localStorage.getItem("token");
 
 !token ? (location.href = "../auth/index.html") : "";
 
-fetch(`http://localhost:3320/usersbal`, {
+fetch(`https://water-tracker-3943a-default-rtdb.firebaseio.com/users.json`, {
   headers: {
     token: token,
   },
 })
   .then((resp) => resp.json())
   .then((records) => {
-    records.forEach((record) => {
+    const clients = Object.values(records);
+    clients.forEach((client) => {
       const tr = document.createElement("tr");
 
       tr.innerHTML = `
-        <td>${record.name}</td>
-        <td>${record.contact}</td>
-        <td>${record.meterNumber}</td>
-        <td>${record.initialUnits}</td>
-        <td>${record.finalUnits}</td>
-        <td>${record.consumedUnits}</td>
-        <td>${record.unitCost}</td>
-        <td>${record.totalCost}</td>
-        <td>${record.paid}</td>
-        <td>${record.balance}</td>
+        <td>${client.name}</td>
+        <td>${client.contact}</td>
+        <td>${client.meterNumber}</td>
+        <td>${client.initialUnits}</td>
+        <td>${client.finalUnits}</td>
+        <td>${client.consumedUnits}</td>
+        <td>${client.unitCost}</td>
+        <td>${client.totalCost}</td>
+        <td>${client.paid}</td>
+        <td>${client.balance}</td>
 
 
         `;
@@ -39,7 +40,8 @@ fetch(`http://localhost:3320/usersbal`, {
 
 const theme = localStorage.getItem("theme");
 bodyy.classList = theme;
-let balurl = "http://localhost:3320/totalbal";
+let balurl =
+  "https://water-tracker-3943a-default-rtdb.firebaseio.com/users.json";
 fetch(balurl, {
   headers: {
     token: token,
@@ -57,7 +59,8 @@ fetch(balurl, {
     balance.innerHTML = bal[0]["SUM(balance)"] + " " + "Kes";
   });
 
-let uniturl = "http://localhost:3320/totalunits";
+let uniturl =
+  "https://water-tracker-3943a-default-rtdb.firebaseio.com/users.json";
 fetch(uniturl, {
   headers: {
     token: token,
@@ -68,7 +71,8 @@ fetch(uniturl, {
     consumed.innerHTML = unit["SUM(consumedUnits)"] + " " + "Units";
   });
 
-let paidurl = "http://localhost:3320/totalpaid";
+let paidurl =
+  "https://water-tracker-3943a-default-rtdb.firebaseio.com/users.json";
 
 fetch(paidurl, {
   headers: {
